@@ -3,6 +3,7 @@ package com.turvo.app.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.turvo.app.dao.ICountersDataService;
 import com.turvo.app.dao.IProductDataService;
 import com.turvo.app.entity.Product;
 import com.turvo.app.pojo.TurvoProduct;
@@ -11,14 +12,24 @@ import com.turvo.app.pojo.TurvoProduct;
 public class ProductService implements IProductService {
 	
 	@Autowired
-	IProductDataService dataService;
+	IProductDataService productDataService;
 	
+	@Autowired
+	ICountersDataService counterDataService;
+	
+	@Override
 	public void saveNewProduct(TurvoProduct product) {
-		Product p = new Product();
-		p.setDescription(product.getDescription());
-		p.setName(product.getName());
-		p.setPrice(product.getPrice());
-		dataService.saveProduct(p);
+		Product newProduct = productDAOConvertor(product);
+		productDataService.saveProduct(newProduct);
+	}
+	
+	private Product productDAOConvertor (TurvoProduct product) {
+		Product dbProductEntity = new Product();
+		dbProductEntity.setDescription(product.getDescription());
+		dbProductEntity.setName(product.getName());
+		dbProductEntity.setPrice(product.getPrice());
+		dbProductEntity.setId(counterDataService.getNextValue("productid"));
+		return dbProductEntity;
 	}
 
 }
