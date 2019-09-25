@@ -20,6 +20,9 @@ public class FlashSale {
 	
 	@Field(value = "Duration")
 	private String durationInSeconds;
+	
+	@Field(value = "RegistrationOpen")
+	private Boolean registrationOpen;
 
 	public String getFlashSaleId() {
 		return flashSaleId;
@@ -51,6 +54,14 @@ public class FlashSale {
 
 	public void setDurationInSeconds(String durationInSeconds) {
 		this.durationInSeconds = durationInSeconds;
+	}
+
+	public Boolean getRegistrationOpen() {
+		return registrationOpen;
+	}
+
+	public void setRegistrationOpen(Boolean registrationOpen) {
+		this.registrationOpen = registrationOpen;
 	}
 
 }

@@ -7,6 +7,8 @@ public class TurvoProduct {
 	private String description;
 	
 	private Double price;
+	
+	private Double quantity;
 
 	public String getName() {
 		return name;
@@ -30,6 +32,14 @@ public class TurvoProduct {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
 	}
 	
 }
