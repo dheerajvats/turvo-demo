@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.turvo.app.dao.utils.Constants;
 import com.turvo.app.dao.utils.Response;
 import com.turvo.app.pojo.ProductResponse;
 import com.turvo.app.pojo.TurvoProduct;
@@ -27,7 +28,7 @@ public class ProductResource {
 		
 		productService.saveNewProduct(product);
 		
-		ProductResponse response = new ProductResponse("Product added successfully");
+		ProductResponse response = new ProductResponse(Constants.PRODUCT_ADD_SUCCESS_MESSAGE);
 		
 		return new ResponseEntity<Response>(response, HttpStatus.OK);
 		

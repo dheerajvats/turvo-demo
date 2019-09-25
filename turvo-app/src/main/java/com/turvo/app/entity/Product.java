@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Product {
 	
 	@Id
-	private Double id;
+	private Double productId;
 	
 	@Field(value = "Name")
 	private String name;
@@ -19,12 +19,12 @@ public class Product {
 	@Field(value = "Price")
 	private Double price;
 
-	public Double getId() {
-		return id;
+	public Double getProductId() {
+		return productId;
 	}
 
-	public void setId(Double id) {
-		this.id = id;
+	public void setProductId(Double productId) {
+		this.productId = productId;
 	}
 
 	public String getName() {

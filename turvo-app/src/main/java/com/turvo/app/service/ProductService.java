@@ -28,7 +28,7 @@ public class ProductService implements IProductService {
 		dbProductEntity.setDescription(product.getDescription());
 		dbProductEntity.setName(product.getName());
 		dbProductEntity.setPrice(product.getPrice());
-		dbProductEntity.setId(counterDataService.getNextValue("productid"));
+		dbProductEntity.setProductId(counterDataService.getNextValue("productid"));
 		return dbProductEntity;
 	}
 
