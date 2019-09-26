@@ -11,10 +11,10 @@ public class Inventory {
 	private String inventoryId;
 	
 	@Field(value = "ProductId")
-	private String productId;
+	private Double productId;
 	
 	@Field(value = "Quantity")
-	private String quantity;
+	private Double quantity;
 
 	public String getInventoryId() {
 		return inventoryId;
@@ -24,19 +24,19 @@ public class Inventory {
 		this.inventoryId = inventoryId;
 	}
 
-	public String getProductId() {
+	public Double getProductId() {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(Double productId) {
 		this.productId = productId;
 	}
 
-	public String getQuantity() {
+	public Double getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 

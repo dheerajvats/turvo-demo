@@ -1,5 +1,7 @@
 package com.turvo.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class RegistrationService implements IRegistrationService {
 	@Override
 	public Double registerForSale(RegistrationRequest request) {
 		Double regId = 0d;
-		if(checkRegistrationActive(request.getSaleId())) {
+		if(checkRegistrationEligibility(request)) {
 			Registration registration = registrationDAOConvertor(request);
 			regId = regDataService.registerForSale(registration);
 		}
@@ -42,9 +44,17 @@ public class RegistrationService implements IRegistrationService {
 		return registration;
 	}
 	
-	private Boolean checkRegistrationActive(String saleId) {
-		FlashSale sale = flashSaleDataService.findBySaleId(saleId);
-		return sale.getRegistrationOpen();
+	private Boolean checkRegistrationEligibility(RegistrationRequest request) {
+		Boolean registrationOpen = Boolean.FALSE;
+		Boolean isEligible = Boolean.FALSE;
+		
+		FlashSale sale = flashSaleDataService.findBySaleId(request.getSaleId());
+		registrationOpen = sale.getRegistrationOpen();
+		
+		List<Registration> reg = regDataService.findByCustomerAndSaleId(request.getCustomerId(), request.getSaleId());
+		if(reg.isEmpty()) isEligible = Boolean.TRUE;
+		
+		return registrationOpen && isEligible;
 	}
 	
 }
