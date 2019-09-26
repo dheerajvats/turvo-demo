@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turvo.app.dao.ICountersDataService;
+import com.turvo.app.dao.IFlashSaleDataService;
 import com.turvo.app.dao.IInventoryDataService;
 import com.turvo.app.dao.IPurchaseOrderDataService;
 import com.turvo.app.dao.IRegistrationDataService;
 import com.turvo.app.dao.utils.Constants;
 import com.turvo.app.dao.utils.OrderStatus;
 import com.turvo.app.dao.utils.RegistrationStatus;
+import com.turvo.app.dao.utils.SaleStatus;
+import com.turvo.app.entity.FlashSale;
 import com.turvo.app.entity.PurchaseOrder;
 import com.turvo.app.entity.Registration;
 import com.turvo.app.pojo.OrderResponse;
@@ -32,11 +35,15 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 	
 	@Autowired
 	IPurchaseOrderDataService orderDataService;
+	
+	@Autowired
+	IFlashSaleDataService saleDataService;
 
 	@Override
 	public OrderResponse placeOrder(PurchaseOrderRequest orderRequest) {
 		OrderResponse response = new OrderResponse();
-		if(checkInventory(orderRequest.getProductId()) && checkRegistration(orderRequest.getCustomerId(), orderRequest.getSaleId())) {
+		if (checkSaleActive(orderRequest.getSaleId()) && checkInventory(orderRequest.getProductId())
+				&& checkRegistration(orderRequest.getCustomerId(), orderRequest.getSaleId())) {
 			updateInventory(orderRequest.getProductId());
 			PurchaseOrder order = saveOrder(orderRequest);
 			updateRegistrationStatus(orderRequest.getCustomerId(), orderRequest.getSaleId());
@@ -54,6 +61,14 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 		Double quantity = 0d;
 		quantity = inventoryDataService.returnProductInventory(productId);
 		return quantity > 0d;
+	}
+	
+	private Boolean checkSaleActive(String saleId) {
+		FlashSale sale = saleDataService.findBySaleId(saleId);
+		if(sale.getStatus().equals(SaleStatus.ACTIVE)) {
+			return Boolean.TRUE;
+		} 
+		return Boolean.FALSE;
 	}
 	
 	private Boolean checkRegistration(String customerId, String saleId) {
