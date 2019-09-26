@@ -27,16 +27,19 @@ public class RegisterationResource {
 	public ResponseEntity<Response> register(@RequestBody RegistrationRequest regRequest, HttpServletRequest httpRequest) {
 		
 		Double regId = 0d;
+		HttpStatus status;
 		regId = regService.registerForSale(regRequest);
 		RegistrationResponse response = new RegistrationResponse();
 		if (!regId.equals(0d)) {			
 			response.setMessage(Constants.REGISTRATION_SUCCESS_MESSAGE);
 			response.setRegistrationId(regId);
+			status = HttpStatus.OK;
 		} else {
 			response.setMessage(Constants.REGISTRATION_ERROR_MESSAGE);
 			response.setRegistrationId(regId);
+			status = HttpStatus.BAD_REQUEST;
 		}
-		return new ResponseEntity<Response>(response, HttpStatus.OK);
+		return new ResponseEntity<Response>(response, status);
 	}
 
 }

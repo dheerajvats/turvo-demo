@@ -3,17 +3,19 @@ package com.turvo.app.entity;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.turvo.app.dao.utils.OrderStatus;
 
+@Document(collection = "PurchaseOrder")
 public class PurchaseOrder {
 	
 	@Id
-	private String orderId;
+	private Double orderId;
 	
 	@Field(value = "ProductId")
-	private String productId;
+	private Double productId;
 	
 	@Field(value = "CustomerId")
 	private String customerId;
@@ -27,19 +29,19 @@ public class PurchaseOrder {
 	@Field(value = "Status")
 	private OrderStatus orderStatus;
 
-	public String getOrderId() {
+	public Double getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Double orderId) {
 		this.orderId = orderId;
 	}
 
-	public String getProductId() {
+	public Double getProductId() {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(Double productId) {
 		this.productId = productId;
 	}
 
