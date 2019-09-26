@@ -33,4 +33,9 @@ public class FlashSaleDataService implements IFlashSaleDataService {
 		repository.save(flashSale);
 	}
 
+	@Override
+	public FlashSale findBySaleId(String saleId) {
+		return repository.findById(saleId).get();
+	}
+
 }

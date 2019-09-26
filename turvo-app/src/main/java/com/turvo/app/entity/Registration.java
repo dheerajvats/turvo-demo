@@ -10,7 +10,7 @@ import com.turvo.app.dao.utils.RegistrationStatus;
 public class Registration {
 	
 	@Id
-	private String registrationId;
+	private Double registrationId;
 	
 	@Field(value = "CustomerId")
 	private String customerId;
@@ -21,11 +21,11 @@ public class Registration {
 	@Field(value = "Status")
 	private RegistrationStatus regStatus;
 
-	public String getRegistrationId() {
+	public Double getRegistrationId() {
 		return registrationId;
 	}
 
-	public void setRegistrationId(String registrationId) {
+	public void setRegistrationId(Double registrationId) {
 		this.registrationId = registrationId;
 	}
 
