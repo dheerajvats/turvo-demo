@@ -4,6 +4,7 @@ public enum SaleStatus {
 	
 	ACTIVE,
 	INACTIVE,
+	ENDED,
 	EXPIRED
 
 }

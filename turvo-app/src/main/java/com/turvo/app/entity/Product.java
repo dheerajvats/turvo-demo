@@ -18,9 +18,6 @@ public class Product {
 	
 	@Field(value = "Price")
 	private Double price;
-	
-	@Field(value = "Quantity")
-	private Double quantity;
 
 	public Double getProductId() {
 		return productId;
@@ -52,14 +49,6 @@ public class Product {
 
 	public void setPrice(Double price) {
 		this.price = price;
-	}
-
-	public Double getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Double quantity) {
-		this.quantity = quantity;
 	}
 
 }

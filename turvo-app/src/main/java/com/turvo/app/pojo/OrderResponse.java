@@ -1,5 +1,9 @@
 package com.turvo.app.pojo;
 
-public class OrderResponse {
+import com.turvo.app.dao.utils.Response;
+
+public class OrderResponse extends Response {
+
+	private static final long serialVersionUID = 1L;
 
 }

@@ -28,7 +28,8 @@ public class ProductResource {
 		
 		productService.saveNewProduct(product);
 		
-		ProductResponse response = new ProductResponse(Constants.PRODUCT_ADD_SUCCESS_MESSAGE);
+		ProductResponse response = new ProductResponse();
+		response.setMessage(Constants.PRODUCT_ADD_SUCCESS_MESSAGE);
 		
 		return new ResponseEntity<Response>(response, HttpStatus.OK);
 		

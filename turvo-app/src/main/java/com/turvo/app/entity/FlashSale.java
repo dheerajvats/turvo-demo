@@ -13,7 +13,7 @@ public class FlashSale {
 	private String flashSaleId;
 	
 	@Field(value = "ProductId")
-	private String productId;
+	private Double productId;
 	
 	@Field(value = "Status")
 	private SaleStatus status;
@@ -32,11 +32,11 @@ public class FlashSale {
 		this.flashSaleId = flashSaleId;
 	}
 
-	public String getProductId() {
+	public Double getProductId() {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(Double productId) {
 		this.productId = productId;
 	}
 
