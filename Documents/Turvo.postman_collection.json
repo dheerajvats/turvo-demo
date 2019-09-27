@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "515abafd-bd32-44d4-80c1-22e766c93e76",
+		"name": "Turvo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/turvo/services/addProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\" : \"Laptop\",\n \"description\" : \"Laptop with affordable price and best configuration\",\n \"price\" : 50\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/turvo/services/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"turvo",
+						"services",
+						"addProduct"
+					]
+				},
+				"description": "Add a new turvo product"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/turvo/services/startSale?saleId=sale1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/turvo/services/startSale?saleId=sale1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"turvo",
+						"services",
+						"startSale"
+					],
+					"query": [
+						{
+							"key": "saleId",
+							"value": "sale1"
+						}
+					]
+				},
+				"description": "Start a flash sale"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/turvo/services/endSale?saleId=sale1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/turvo/services/endSale?saleId=sale1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"turvo",
+						"services",
+						"endSale"
+					],
+					"query": [
+						{
+							"key": "saleId",
+							"value": "sale1"
+						}
+					]
+				},
+				"description": "End a flash sale"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/turvo/services/registerForSale",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"saleId\":\"sale1\",\n\t\"customerId\":\"10001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/turvo/services/registerForSale",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"turvo",
+						"services",
+						"registerForSale"
+					]
+				},
+				"description": "Registration for sale"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/turvo/services/orderProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 2,\n    \"customerId\": \"10001\",\n    \"saleId\":\"sale1\",\n    \"registrationId\":1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/turvo/services/orderProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"turvo",
+						"services",
+						"orderProduct"
+					]
+				},
+				"description": "Place order"
+			},
+			"response": []
+		}
+	]
+}
